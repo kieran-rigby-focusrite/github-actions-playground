@@ -3,13 +3,13 @@ on: push
 
 jobs:
   call-api:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: Get JUCE SHA
       id: get-juce-sha
-      run: "echo ::set-output name=sha::$(curl -s -u 'u:${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/${{ github.repository }}/contents/juce | jq .sha | tr -d '"')"
+      run: echo "::set-output name=sha::$(curl -s -u 'u:${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/${{ github.repository }}/contents/JUCE | jq .sha | tr -d '"')"
 
     # Runs a single command using the runners shell
     - name: Get Hash
